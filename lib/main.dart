@@ -1,12 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp_ui/colors.dart';
+import 'package:whatsapp_ui/features/landing/screens/landing_screen.dart';
+import 'package:whatsapp_ui/firebase_options.dart';
+import 'package:whatsapp_ui/router.dart';
 import 'package:whatsapp_ui/screens/mobile_layout_screen.dart';
 import 'package:whatsapp_ui/screens/web_layout_screen.dart';
 import 'package:whatsapp_ui/utils/responsive_layout.dart';
-
-import 'features/landing/screens/landing_screen.dart';
-import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +26,11 @@ class MyApp extends StatelessWidget {
       title: 'Whatsapp UI',
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: backgroundColor,
+        appBarTheme: const AppBarTheme(
+          color: appBarColor,
+        ),
       ),
+      onGenerateRoute: ((settings) => generateRoute(settings)),
       home: const LandingScreen(),
       //const ResponsiveLayout(
       //   mobileScreenLayout: MobileLayoutScreen(),
